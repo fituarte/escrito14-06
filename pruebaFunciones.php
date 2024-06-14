@@ -39,7 +39,7 @@ echo "ejercicio 2 " . buscarProducto($productos, "nike") . "<br>";
 function mostrarProductos($listaProductos){
 
     foreach($listaProductos as $producto){
-echo "nombre: " .$producto["nombre"] ." modelo " .$producto["modelo"]. "<br>"; 
+echo  "nombre: " .$producto["nombre"] ." modelo " .$producto["modelo"]. "<br>"; 
 
     };
 }
@@ -60,6 +60,31 @@ $nuevosDatos = ["nombre" => "championes", "cantidad" => 40, "valor" => "500", "m
 $productos = actualizarProducto($productos, "championes", $nuevosDatos);
 
 var_dump($productos);
+
+
+$productosValor = [
+    ["nombre" => "championes", "cantidad" => 40, "valor" => "500", "modelo" => "victor"],
+    ["nombre" => "pantalon", "cantidad" => 40, "valor" => "600", "modelo" => "victor"],
+    ["nombre" => "celular", "cantidad" => 40, "valor" => "700", "modelo" => "victor"],
+    ["nombre" => "tv", "cantidad" => 40, "valor" => "800", "modelo" => "victor"]
+];
+
+
+function calcularValorInventario($productosValor){
+    $suma = 0;
+
+  foreach($productosValor as $producto){
+    $costo = $producto["valor"];
+   $valor = floatval($costo);
+   $suma += $valor; 
+}
+
+return $suma;
+}
+
+$inventario = calcularValorInventario($productosValor);
+
+echo $inventario;
 
 
 ?>
