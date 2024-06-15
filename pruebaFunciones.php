@@ -168,4 +168,32 @@ $promedio = calcularPromedio($productosPromedio);
 
 echo  "el promedio es: " . $promedio;
 
+
+function limpiarResultados(&$productos) {
+    foreach ($productos as $key => $value) {
+        unset($productos[$key]);
+    }
+}
+
+$productos = [
+    ["nombre" => "championes", "cantidad" => 40, "valor" => "500", "modelo" => "adidas"],
+    ["nombre" => "pantalon", "cantidad" => 40, "valor" => "600", "modelo" => "reebok"],
+    ["nombre" => "celular", "cantidad" => 40, "valor" => "700", "modelo" => "samsung"],
+    ["nombre" => "tv", "cantidad" => 40, "valor" => "800", "modelo" => "panavox"]
+];
+
+echo "<h2>Productos antes de vaciar:</h2>";
+echo "<pre>";
+print_r($productos);
+echo "</pre>";
+
+limpiarResultados($productos);
+
+echo "<h2>Productos después de vaciar:</h2>";
+echo "<pre>";
+print_r($productos);
+echo "</pre>";
+
 ?>
+
+
