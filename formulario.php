@@ -1,57 +1,52 @@
-
-
 <?php
 session_start();
 $resultado = '';
 
-// Verificar si hay un resultado almacenado en la sesión
 if (isset($_SESSION['resultado'])) {
     $resultado = $_SESSION['resultado'];
+    unset($_SESSION['resultado']);
 }
 ?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Gestión de Usuarios</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Datos</title>
 </head>
 <body>
-    <form action="procesamiento.php" method="POST">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre"><br>
-        
-        <label for="cantidad">cantidad:</label>
-        <input type="number" id="cantidad" name="cantidad"><br>
-        
-        <label for="valor">Email:</label>
-        <input type="text" id="valor" name="valor">
-        
-        <input type="text" id="modelo" name="modelo" value="agregar">
-        <input for="modelo">Agregar</input><br>
-        
-    
-    </form>
 
-    <form action="procesamiento.php" method="POST">
-        <input type="hidden" name="accion" value="limpiar">
-        <input type="submit" value="Limpiar Resultados">
-    </form>
+    <h1>FORMULARIO DE DATOS</h1>
 
-    <!-- <div id="resultados">
-    
-       
-    </div> -->
-
-    <div id="resultados">
-    <?php echo $resultado; 
    
-    ?>
-    
-    </div>
+    <?php echo $resultado; ?>
 
-    
+    <form action="procesamiento.php" method="post" enctype="multipart/form-data">
+        <label for="nombre">Nombre:</label>
+        <input id="nombre" name="nombre" type="text"><br><br>
+
+        <label for="modelo">Modelo:</label>
+        <input id="modelo" name="modelo" type="text"><br><br>
+
+        <label for="cantidad">Cantidad:</label>
+        <input id="cantidad" name="cantidad" type="text"><br><br>
+
+        <label for="valor">Valor:</label>
+        <input id="valor" name="valor" type="text"><br><br>
+
+        <input type="submit" name="agregar" value="Agregar">
+        <input type="submit" name="buscar" value="Buscar">
+        <input type="submit" name="mostrar" value="Mostrar">
+        <input type="submit" name="actualizar" value="Actualizar">
+        <input type="submit" name="limpiar" value="Limpiar"><br><br>
+
+      
+        <input type="hidden" name="calcular_valor_total">
+        <input type="hidden" name="filtrar_por_valor">
+        <input type="hidden" name="listar_modelos_disponibles">
+        <input type="hidden" name="valor_promedio">
+    </form>
+
 </body>
 </html>
-
-
-
